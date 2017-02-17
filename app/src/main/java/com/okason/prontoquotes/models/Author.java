@@ -17,6 +17,15 @@ public class Author extends RealmObject{
     private String authorCloudImageUrl;
     private RealmList<Quote> quotes;
 
+    public void updateToRealm(Author author) {
+        guid = author.getGuid();
+        authorName = author.getAuthorName();
+        authorLocalImageUrl = author.authorLocalImageUrl;
+        authorCloudImageUrl = author.getAuthorCloudImageUrl();
+        quotes = getQuotes();
+
+    }
+
 
     public long getId() {
         return id;

@@ -1,4 +1,4 @@
-package com.okason.prontoquotes.quotes;
+package com.okason.prontoquotes.ui.authors;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +9,12 @@ import android.view.View;
 
 import com.okason.prontoquotes.R;
 
-public class QuoteListActivity extends AppCompatActivity {
+public class AuthorListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quote_list);
+        setContentView(R.layout.activity_author_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,6 +26,7 @@ public class QuoteListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }
