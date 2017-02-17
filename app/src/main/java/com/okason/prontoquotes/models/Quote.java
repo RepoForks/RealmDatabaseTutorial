@@ -22,6 +22,18 @@ public class Quote extends RealmObject{
         return id;
     }
 
+    public void updateToRealm(Quote selectedQuote) {
+        guid = selectedQuote.getGuid();
+        quote = selectedQuote.getQuote();
+        author = selectedQuote.getAuthor();
+        category = selectedQuote.getCategory();
+        quoteLocalImageUrl = selectedQuote.getQuoteLocalImageUrl();
+        quoteCloudImageUrl = selectedQuote.getQuoteCloudImageUrl();
+        isFavourite = selectedQuote.isFavourite;
+
+    }
+
+
 
 
 

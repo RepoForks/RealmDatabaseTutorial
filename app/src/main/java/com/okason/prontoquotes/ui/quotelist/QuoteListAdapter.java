@@ -1,6 +1,7 @@
 package com.okason.prontoquotes.ui.quotelist;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,14 +40,19 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.View
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View quoteView = inflater.inflate(R.layout.quote_row_custom_layout, parent, false);
-        return new ViewHolder(quoteView);
-    }
+    return new ViewHolder(quoteView);
+}
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Quote selectedQuote = quoteList.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final Quote selectedQuote = quoteList.get(position);
         holder.quoteText.setText(selectedQuote.getQuote());
         holder.authorName.setText(selectedQuote.getAuthor().getAuthorName());
+        if (selectedQuote.isFavourite()){
+            holder.favoriteText.setTextColor(ContextCompat.getColor(context, R.color.primary));
+        }else {
+            holder.favoriteText.setTextColor(ContextCompat.getColor(context, R.color.primary_text));
+        }
 
         Glide.with(context)
                 .load(selectedQuote.getQuoteCloudImageUrl())
@@ -54,10 +60,20 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.View
                 .centerCrop()
                 .into(holder.quoteImage);
 
+        holder.shareText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.shareText.setVisibility(View.GONE);
+                holder.favoriteText.setVisibility(View.GONE);
+                listener.onShareButtonClicked(selectedQuote, holder.getLayoutPosition());
+            }
+        });
+
 
     }
 
     public void replaceData(List<Quote> quotes) {
+      //  quoteList.clear();
         quoteList = quotes;
         notifyDataSetChanged();
     }
@@ -77,12 +93,27 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.View
         @BindView(R.id.text_view_author_name)
         TextView authorName;
 
+        @BindView(R.id.text_view_favourite)
+        TextView favoriteText;
+
+        @BindView(R.id.text_view_share)
+        TextView shareText;
+
 
 
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+
+            favoriteText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Quote selectedQuote = quoteList.get(getLayoutPosition());
+                    listener.onFavoriteButtonClicked(selectedQuote.getId());
+                }
+            });
         }
     }
 }
