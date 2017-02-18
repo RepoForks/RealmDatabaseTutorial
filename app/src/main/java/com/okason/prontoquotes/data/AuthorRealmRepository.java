@@ -12,7 +12,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import io.realm.Sort;
 
 /**
  * Created by Valentine on 2/17/2017.
@@ -26,13 +25,9 @@ public class AuthorRealmRepository implements AuthorListContract.Repository {
     }
 
     @Override
-    public List<Author> getAllAuthors() {
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<Author> authors = realm.where(Author.class).findAll();
-        authors = authors.sort("id", Sort.DESCENDING);
-        List<Author> result = realm.copyFromRealm(authors);
-        realm.close();
-        return result;
+    public List<Author> getAllAuthors(Realm passedInRealm) {
+        RealmResults<Author> authors = passedInRealm.where(Author.class).findAll();
+        return authors;
     }
 
     @Override

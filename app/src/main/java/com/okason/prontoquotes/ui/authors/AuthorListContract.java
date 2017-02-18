@@ -7,6 +7,8 @@ import com.okason.prontoquotes.models.Author;
 
 import java.util.List;
 
+import io.realm.Realm;
+
 /**
  * Created by Valentine on 2/17/2017.
  */
@@ -20,6 +22,7 @@ public interface AuthorListContract {
         void showMessage(String message);
         void scrollToAuthor(Author author);
         Context getContext();
+        Realm getRealmInstance();
 
     }
 
@@ -28,18 +31,16 @@ public interface AuthorListContract {
         Author getAuthor(long id);
         void onAuthorSelected(Author author);
         void onAddAuthorButtonClicked();
-        void checkStatus(long id);
         void addAuthor(Author author);
         void onDeleteAuthorButtonClicked(Author author);
         void deleteAuthor(Author author);
         void onEditAuthorButtonClicked(Author author);
         void updateAuthor(Author author);
-        void onAddAuthorManualluButtonClicked();
 
     }
 
     public interface Repository{
-        List<Author> getAllAuthors();
+        List<Author> getAllAuthors(Realm passedInRealm);
         Author getAuthorById(long id);
         void deleteAsync(long id, OnDatabaseOperationCompleteListener listener);
         void saveAsync(Author author, OnDatabaseOperationCompleteListener listener);

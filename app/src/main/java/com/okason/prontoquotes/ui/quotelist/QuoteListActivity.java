@@ -1,6 +1,7 @@
 package com.okason.prontoquotes.ui.quotelist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -24,6 +25,7 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 import com.okason.prontoquotes.R;
 import com.okason.prontoquotes.data.SampleData;
+import com.okason.prontoquotes.ui.authors.AuthorListActivity;
 import com.okason.prontoquotes.utils.Constants;
 
 public class QuoteListActivity extends AppCompatActivity {
@@ -93,7 +95,7 @@ public class QuoteListActivity extends AppCompatActivity {
 
                         if (drawerItem != null){
                             //handle on navigation drawer item
-                           // onTouchDrawer((int) drawerItem.getIdentifier());
+                            onTouchDrawer((int) drawerItem.getIdentifier());
                         }
                         return false;
                     }
@@ -117,6 +119,17 @@ public class QuoteListActivity extends AppCompatActivity {
                 .withFireOnInitialOnClick(true)
                 .withSavedInstance(savedInstanceState)
                 .build();
+    }
+
+    private void onTouchDrawer(int position) {
+        switch (position){
+            case Constants.QUOTES:
+                //do nothing
+                break;
+            case Constants.AUTHORS:
+                startActivity(new Intent(mActivity, AuthorListActivity.class));
+                break;
+        }
     }
 
     private void openFragment(Fragment fragment, String screenTitle){
