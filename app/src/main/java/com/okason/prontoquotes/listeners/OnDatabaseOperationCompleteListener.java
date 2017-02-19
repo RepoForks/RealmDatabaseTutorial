@@ -1,4 +1,4 @@
-package com.okason.prontoquotes.core.listeners;
+package com.okason.prontoquotes.listeners;
 
 /**
  * Created by Valentine on 2/24/2016.

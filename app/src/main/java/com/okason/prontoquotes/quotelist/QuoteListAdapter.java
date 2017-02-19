@@ -1,4 +1,4 @@
-package com.okason.prontoquotes.ui.quotelist;
+package com.okason.prontoquotes.quotelist;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.okason.prontoquotes.R;
-import com.okason.prontoquotes.core.listeners.QuoteActionListener;
+import com.okason.prontoquotes.listeners.QuoteActionListener;
 import com.okason.prontoquotes.models.Quote;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.View
         }
 
         Glide.with(context)
-                .load(selectedQuote.getQuoteCloudImageUrl())
+                .load(selectedQuote.getQuoteBackgroundImageUrl())
                 .fallback(R.drawable.quote_fall_back_picture)
                 .centerCrop()
                 .into(holder.quoteImage);

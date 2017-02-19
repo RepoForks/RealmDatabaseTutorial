@@ -1,4 +1,4 @@
-package com.okason.prontoquotes.core;
+package com.okason.prontoquotes;
 
 import android.app.Application;
 import android.content.Context;
@@ -11,9 +11,7 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
-import com.okason.prontoquotes.R;
 import com.okason.prontoquotes.models.Author;
-import com.okason.prontoquotes.models.Category;
 import com.okason.prontoquotes.models.Quote;
 import com.okason.prontoquotes.utils.Constants;
 
@@ -30,7 +28,6 @@ import io.realm.RealmResults;
 public class ProntoQuoteApplication extends Application {
 
     public static AtomicLong quotePrimaryKey;
-    public static AtomicLong categoryPrimaryKey;
     public static AtomicLong authorPrimaryKey;
 
     @Override
@@ -138,27 +135,7 @@ public class ProntoQuoteApplication extends Application {
             realm.commitTransaction();
         }
 
-        try {
-            //Do the same for the Category table
-            categoryPrimaryKey = new AtomicLong(realm.where(Category.class).max("id").longValue() + 1);
-        } catch (Exception e) {
-            realm.beginTransaction();
 
-            Category category = realm.createObject(Category.class, 0);
-
-
-            //Now set the primary key again
-            categoryPrimaryKey = new AtomicLong(realm.where(Category.class).max("id").longValue() + 1);
-
-            //remove temp category
-            RealmResults<Category> categoryResult = realm.where(Category.class).equalTo("id", 0).findAll();
-            categoryResult.deleteAllFromRealm();
-            realm.commitTransaction();
-
-        } finally {
-            //Close realm once you are done
-            realm.close();
-        }
 
     }
 }

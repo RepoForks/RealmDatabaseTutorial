@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:name=".core.ProntoQuoteApplication"
+        android:name=".ProntoQuoteApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -14,14 +14,14 @@
         <activity
             android:name=".ui.authors.AuthorListActivity"
             android:label="@string/title_activity_author_list"
-            android:parentActivityName=".ui.quotelist.QuoteListActivity"
+            android:parentActivityName=".quotelist.QuoteListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.quotelist.QuoteListActivity" />
+                android:value=".quotelist.QuoteListActivity" />
         </activity>
         <activity
-            android:name=".ui.quotelist.QuoteListActivity"
+            android:name=".quotelist.QuoteListActivity"
             android:label="@string/title_activity_quote_list"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

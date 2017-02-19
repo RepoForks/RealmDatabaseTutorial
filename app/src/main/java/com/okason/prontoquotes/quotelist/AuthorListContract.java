@@ -1,8 +1,8 @@
-package com.okason.prontoquotes.ui.authors;
+package com.okason.prontoquotes.quotelist;
 
 import android.content.Context;
 
-import com.okason.prontoquotes.core.listeners.OnDatabaseOperationCompleteListener;
+import com.okason.prontoquotes.listeners.OnDatabaseOperationCompleteListener;
 import com.okason.prontoquotes.models.Author;
 
 import java.util.List;
@@ -16,26 +16,13 @@ import io.realm.Realm;
 public interface AuthorListContract {
     public interface View{
         void showAuthors(List<Author> authors);
-        void showDeleteAuthorPrompt(Author author);
-        void showEmptyText();
-        void hideEmptyText();
-        void showMessage(String message);
-        void scrollToAuthor(Author author);
         Context getContext();
         Realm getRealmInstance();
 
     }
 
     public interface Actions{
-        void loadAuthors();
-        Author getAuthor(long id);
-        void onAuthorSelected(Author author);
-        void onAddAuthorButtonClicked();
-        void addAuthor(Author author);
-        void onDeleteAuthorButtonClicked(Author author);
-        void deleteAuthor(Author author);
-        void onEditAuthorButtonClicked(Author author);
-        void updateAuthor(Author author);
+        void loadAuthors();       
 
     }
 

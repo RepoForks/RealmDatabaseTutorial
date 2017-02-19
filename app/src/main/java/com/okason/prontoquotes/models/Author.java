@@ -11,21 +11,16 @@ import io.realm.annotations.PrimaryKey;
 public class Author extends RealmObject{
     @PrimaryKey
     private long id;
-    private String guid;
     private String authorName;
-    private String authorLocalImageUrl;
-    private String authorCloudImageUrl;
+    private String authorImageUrl;
     private RealmList<Quote> quotes;
 
     public void updateToRealm(Author author) {
-        guid = author.getGuid();
         authorName = author.getAuthorName();
-        authorLocalImageUrl = author.authorLocalImageUrl;
-        authorCloudImageUrl = author.getAuthorCloudImageUrl();
+        authorImageUrl = author.authorImageUrl;
         quotes = getQuotes();
 
     }
-
 
     public long getId() {
         return id;
@@ -33,14 +28,6 @@ public class Author extends RealmObject{
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getGuid() {
-        return guid;
-    }
-
-    public void setGuid(String guid) {
-        this.guid = guid;
     }
 
     public String getAuthorName() {
@@ -51,20 +38,12 @@ public class Author extends RealmObject{
         this.authorName = authorName;
     }
 
-    public String getAuthorLocalImageUrl() {
-        return authorLocalImageUrl;
+    public String getAuthorImageUrl() {
+        return authorImageUrl;
     }
 
-    public void setAuthorLocalImageUrl(String authorLocalImageUrl) {
-        this.authorLocalImageUrl = authorLocalImageUrl;
-    }
-
-    public String getAuthorCloudImageUrl() {
-        return authorCloudImageUrl;
-    }
-
-    public void setAuthorCloudImageUrl(String authorCloudImageUrl) {
-        this.authorCloudImageUrl = authorCloudImageUrl;
+    public void setAuthorImageUrl(String authorImageUrl) {
+        this.authorImageUrl = authorImageUrl;
     }
 
     public RealmList<Quote> getQuotes() {

@@ -10,12 +10,9 @@ import io.realm.annotations.PrimaryKey;
 public class Quote extends RealmObject{
     @PrimaryKey
     private long id;
-    private String guid;
     private String quote;
     private Author author;
-    private Category category;
-    private String quoteLocalImageUrl;
-    private String quoteCloudImageUrl;
+    private String quoteBackgroundImageUrl;
     private boolean isFavourite;
 
     public long getId() {
@@ -23,30 +20,16 @@ public class Quote extends RealmObject{
     }
 
     public void updateToRealm(Quote selectedQuote) {
-        guid = selectedQuote.getGuid();
         quote = selectedQuote.getQuote();
         author = selectedQuote.getAuthor();
-        category = selectedQuote.getCategory();
-        quoteLocalImageUrl = selectedQuote.getQuoteLocalImageUrl();
-        quoteCloudImageUrl = selectedQuote.getQuoteCloudImageUrl();
+        quoteBackgroundImageUrl = selectedQuote.getQuoteBackgroundImageUrl();
         isFavourite = selectedQuote.isFavourite;
 
     }
 
 
-
-
-
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getGuid() {
-        return guid;
-    }
-
-    public void setGuid(String guid) {
-        this.guid = guid;
     }
 
     public String getQuote() {
@@ -65,28 +48,12 @@ public class Quote extends RealmObject{
         this.author = author;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getQuoteBackgroundImageUrl() {
+        return quoteBackgroundImageUrl;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getQuoteLocalImageUrl() {
-        return quoteLocalImageUrl;
-    }
-
-    public void setQuoteLocalImageUrl(String quoteLocalImageUrl) {
-        this.quoteLocalImageUrl = quoteLocalImageUrl;
-    }
-
-    public String getQuoteCloudImageUrl() {
-        return quoteCloudImageUrl;
-    }
-
-    public void setQuoteCloudImageUrl(String quoteCloudImageUrl) {
-        this.quoteCloudImageUrl = quoteCloudImageUrl;
+    public void setQuoteBackgroundImageUrl(String quoteBackgroundImageUrl) {
+        this.quoteBackgroundImageUrl = quoteBackgroundImageUrl;
     }
 
     public boolean isFavourite() {

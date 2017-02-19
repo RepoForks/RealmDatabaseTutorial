@@ -3,10 +3,10 @@ package com.okason.prontoquotes.data;
 import android.content.Context;
 
 import com.okason.prontoquotes.R;
-import com.okason.prontoquotes.core.ProntoQuoteApplication;
-import com.okason.prontoquotes.core.listeners.OnDatabaseOperationCompleteListener;
+import com.okason.prontoquotes.ProntoQuoteApplication;
+import com.okason.prontoquotes.listeners.OnDatabaseOperationCompleteListener;
 import com.okason.prontoquotes.models.Author;
-import com.okason.prontoquotes.ui.authors.AuthorListContract;
+import com.okason.prontoquotes.quotelist.AuthorListContract;
 
 import java.util.List;
 

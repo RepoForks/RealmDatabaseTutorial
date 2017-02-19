@@ -1,4 +1,4 @@
-package com.okason.prontoquotes.core.listeners;
+package com.okason.prontoquotes.listeners;
 
 import com.okason.prontoquotes.models.Quote;
 
